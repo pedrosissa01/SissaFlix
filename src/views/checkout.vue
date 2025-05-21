@@ -1,7 +1,7 @@
 <template>
-  <div class="px-4 py-8 sm:px-6 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-8 bg-gray-50 min-h-screen">
-    <div class="bg-white shadow-sm rounded-2xl p-6 space-y-6">
-      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-800">Finalizar Pedido</h2>
+  <div class="px-4 py-8 sm:px-6 md:px-10 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-8 min-h-screen">
+    <div class="bg-white dark:bg-zinc-800 shadow-sm rounded-2xl p-6 space-y-6">
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100">Finalizar Pedido</h2>
 
       <div class="grid grid-cols-2 gap-3 py-4">
         <div
@@ -23,7 +23,7 @@
       </div>
 
       <section class="grid space-y-4 pb-5 gap-4">
-        <h3 class="text-lg sm:text-xl font-semibold text-zinc-700">Informações Pessoais</h3>
+        <h3 class="text-lg sm:text-xl font-semibold text-zinc-900 dark:text-zinc-100">Informações Pessoais</h3>
 
         <div class="grid gap-1">
           <label class="text-xs sm:text-sm font-medium">Nome Completo <span class="text-red-500">*</span></label>
@@ -61,7 +61,7 @@
       </section>
 
       <section class="space-y-4">
-        <h3 class="text-lg sm:text-xl font-semibold text-zinc-700">Método de Pagamento</h3>
+        <h3 class="text-lg sm:text-xl font-semibold text-zinc-900 dark:text-zinc-100">Método de Pagamento</h3>
         <div class="grid grid-cols-2 gap-4 py-5">
           <div
             class="flex items-center justify-center gap-2 p-3 rounded-xl cursor-pointer border transition text-sm sm:text-base"
@@ -82,19 +82,19 @@
         </div>
 
         <div v-if="metodoPagamento === 'pix'" class="mt-4 grid gap-2">
-          <h4 class="text-base sm:text-lg font-semibold text-center text-zinc-700">Pagamento via PIX</h4>
+          <h4 class="text-base sm:text-lg font-semibold text-center text-zinc-900 dark:text-zinc-100">Pagamento via PIX</h4>
           <p class="text-center text-xs sm:text-sm text-zinc-500">
             Escaneie ou copie o código abaixo <br />
             <span class="text-red-500 font-semibold">{{ tempoRestante }}s restantes</span>
           </p>
           <div class="flex justify-center">
-            <div class="p-4 bg-zinc-100 rounded-xl shadow">
-              <img :src="qrCodeUrl" alt="QR Code Pix" class="w-32 h-32 sm:w-40 sm:h-40 rounded-xl" />
+            <div class="p-4 bg-zinc-100 dark:bg-zinc-700 rounded-xl shadow">
+              <img :src="qrCodeUrl" alt="QR Code Pix" class="w-32 h-32 sm:w-40 sm:h-40 rounded-lg" />
             </div>
           </div>
           <div class="flex items-center justify-center">
-            <div class="bg-gray-100 w-auto rounded-lg flex overflow-hidden">
-              <code class="text-xs bg-gray-100 px-3 py-1 rounded-l-lg text-zinc-700 font-mono break-all truncate">{{ codigoPix }}</code>
+            <div class="bg-gray-100 dark:bg-zinc-500 w-auto rounded-lg flex overflow-hidden">
+              <code class="text-xs px-3 py-1 rounded-l-lg text-zinc-700 dark:text-zinc-100 font-mono break-all truncate">{{ codigoPix }}</code>
               <button class="text-sm bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-r-lg shadow">
                 Copiar
               </button>
@@ -131,12 +131,12 @@
     </div>
 
     <div class="space-y-4">
-      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-800 pb-4">Resumo do Carrinho ({{ cart.length }})</h2>
+      <h2 class="text-2xl sm:text-3xl font-bold text-zinc-900 dark:text-zinc-100 pb-4">Resumo do Carrinho ({{ cart.length }})</h2>
       <ul class="grid gap-3 max-h-[60vh] sm:max-h-[70vh] overflow-auto mb-4">
         <li
           v-for="f in cart"
           :key="f.id"
-          class="bg-white shadow rounded-xl p-3 flex gap-3 sm:gap-4 items-start"
+          class="bg-white dark:bg-zinc-800 shadow rounded-xl p-3 flex gap-3 sm:gap-4 items-start"
         >
           <img
             :src="`https://image.tmdb.org/t/p/w500${f.poster_path}`"
@@ -146,7 +146,7 @@
           <div class="flex-1 min-w-0">
             <h4 class="text-xs sm:text-sm font-semibold truncate">{{ f.title }}</h4>
             <p class="text-xs text-zinc-500">ID: {{ f.id }}</p>
-            <p class="text-xs mt-1 text-zinc-600">{{ f.quantity }}x - R$ {{ f.price.toFixed(2) }}</p>
+            <p class="text-xs mt-1 text-zinc-500">{{ f.quantity }}x - R$ {{ f.price.toFixed(2) }}</p>
             <p class="text-xs font-bold text-green-600 mt-1">Total: R$ {{ (f.price * f.quantity).toFixed(2) }}</p>
           </div>
           <div class="flex-shrink-0">
@@ -158,12 +158,12 @@
       </ul>
 
       <div class="pt-4 grid gap-4">
-        <div class="flex items-center bg-white p-3 rounded-xl shadow mt-4">
+        <div class="flex items-center bg-white dark:bg-zinc-800 p-3 rounded-xl shadow mt-4">
           <Icon icon="mdi:ticket-confirmation" class="w-5 h-5 mr-2 text-red-500" />
           <input
             type="text"
             placeholder="Adicionar cupom de desconto"
-            class="w-full bg-transparent focus:outline-none text-xs sm:text-sm text-zinc-700 pl-2"
+            class="w-full bg-transparent focus:outline-none text-xs sm:text-sm text-zinc-900 dark:text-zinc-100 pl-2"
           />
         </div>
 
@@ -181,9 +181,9 @@
       v-if="mostrarModal"
       class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 bg-opacity-50 px-4"
     >
-      <div class="bg-white rounded-xl shadow-lg max-w-sm w-full p-6 text-center space-y-4 grid gap-3">
+      <div class="bg-white dark:bg-zinc-800 rounded-xl shadow-lg max-w-sm w-full p-6 text-center space-y-4 grid gap-3">
         <h2 class="text-xl font-semibold text-green-600">Pagamento Confirmado!</h2>
-        <p class="text-sm text-zinc-600">Sua compra foi finalizada com sucesso.</p>
+        <p class="text-sm text-zinc-600 dark:text-zinc-300">Sua compra foi finalizada com sucesso.</p>
         <button
           @click="irParaHome"
           class="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-semibold transition"

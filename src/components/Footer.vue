@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-white py-12">
+  <footer class="bg-white dark:bg-zinc-800 py-12">
     <div class="mx-auto px-6 flex flex-col items-center text-center gap-6">
       <form
         class="flex flex-col items-center gap-4 w-full max-w-md"
